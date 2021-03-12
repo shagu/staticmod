@@ -18,7 +18,7 @@ local _, class = UnitClass("player")
 local class = RAID_CLASS_COLORS[class] or { r = .5, g = .5, b = .5, a = 1 }
 
 -- add name background to player frame
-PlayerFrameNameBackground = PlayerFrame:CreateTexture(nil, "LOW")
+PlayerFrameNameBackground = PlayerFrame:CreateTexture(nil, "BACKGROUND")
 PlayerFrameNameBackground:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-LevelBackground")
 PlayerFrameNameBackground:SetWidth(119)
 PlayerFrameNameBackground:SetHeight(19)
