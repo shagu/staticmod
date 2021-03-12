@@ -11,6 +11,7 @@ local blacklist = {
   ["Solid Texture"] = true,
   ["WHITE8X8"] = true,
   ["StatusBar"] = true,
+  ["BarFill"] = true,
   ["Portrait"] = true,
   ["Button"] = true,
   ["Icon"] = true,
@@ -102,4 +103,39 @@ if darken then
 
   MinimapClock:SetBackdropBorderColor(.2,.2,.2,1)
   MinimapClock:SetBackdropColor(.2,.2,.2,1)
+
+  local function IsNamePlate(frame)
+    if frame:GetObjectType() ~= "Button" then return nil end
+    regions = frame:GetRegions()
+
+    if not regions then return nil end
+    if not regions.GetObjectType then return nil end
+    if not regions.GetTexture then return nil end
+
+    if regions:GetObjectType() ~= "Texture" then return nil end
+    return regions:GetTexture() == "Interface\\Tooltips\\Nameplate-Border" or nil
+  end
+
+  local registry = {}
+  local initialized = 0
+  local parentcount, childs, plate
+  local nameplates = CreateFrame("Frame", nil, UIParent)
+  nameplates:SetScript("OnUpdate", function()
+    parentcount = WorldFrame:GetNumChildren()
+    if initialized < parentcount then
+      childs = { WorldFrame:GetChildren() }
+      for i = initialized + 1, parentcount do
+        plate = childs[i]
+        if IsNamePlate(plate) and not registry[plate] then
+          SetVertex(plate)
+          local healthbar = plate:GetChildren()
+          print(healthbar:GetStatusBarTexture():GetTexture())
+
+          registry[plate] = plate
+        end
+      end
+
+      initialized = parentcount
+    end
+  end)
 end
