@@ -1,7 +1,9 @@
 # staticmod
 
-A small addon that slightly adjusts the wow stock UI.
-See config.lua for the limited options available.
+A small unfinished addon that slightly adjusts the wow stock UI to my personal needs.
+See config.lua for the limited options available. Don't ask for features, I don't plan to maintain this at all.
+
+![preview](preview.jpg)
 
 ## General
 - `/rl` can be used to reload the UI
