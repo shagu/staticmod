@@ -6,3 +6,4 @@
 
 # basic
 core.lua
+config.lua

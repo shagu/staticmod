@@ -1,0 +1,2 @@
+staticmod_config = {
+}
