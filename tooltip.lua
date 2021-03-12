@@ -1,6 +1,7 @@
-GameTooltipStatusBar:SetPoint('TOPLEFT',   7, -5)
-GameTooltipStatusBar:SetPoint('TOPRIGHT', -7, -5)
-GameTooltipStatusBar:SetHeight(4)
+GameTooltipStatusBar:ClearAllPoints()
+GameTooltipStatusBar:SetPoint("BOTTOMLEFT", 7, 4)
+GameTooltipStatusBar:SetPoint("BOTTOMRIGHT", -7, 4)
+GameTooltipStatusBar:SetHeight(3)
 
 local position = CreateFrame("Frame", nil, GameTooltip)
 position:SetScript("OnShow", function()
