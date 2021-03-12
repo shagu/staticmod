@@ -27,17 +27,20 @@ nameplates:SetScript("OnUpdate", function()
 
         -- create new plate
         local new = CreateFrame("Frame", nil, plate)
+        new:SetScale(UIParent:GetScale())
         new:SetAllPoints(plate)
-        new:Hide()
+        new.plate = plate
 
-        local healthbar, castbar = plate:GetChildren()
+        local healthbar = plate:GetChildren()
         healthbar:SetParent(new)
+
+        plate:SetWidth(owidth*UIParent:GetScale())
+        plate:SetHeight(oheight*UIParent:GetScale())
 
         for i, object in pairs({plate:GetRegions()}) do
           object:SetParent(new)
         end
 
-        new.plate = plate
         new:SetScript("OnShow", function()
           -- adjust sizes
           this:SetScale(UIParent:GetScale())
@@ -45,7 +48,6 @@ nameplates:SetScript("OnUpdate", function()
           this.plate:SetHeight(oheight*UIParent:GetScale())
         end)
 
-        new:Show()
         registry[plate] = plate
       end
     end
