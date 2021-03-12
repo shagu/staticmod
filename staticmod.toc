@@ -1,0 +1,8 @@
+## Interface: 11200
+## Title: |cffffcc00static|cffffffffmod
+## Author: Shagu
+## Notes: Static Modifications to enhance the default UI to my personal taste
+## Version: GIT
+
+# basic
+core.lua
