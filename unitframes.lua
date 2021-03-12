@@ -8,7 +8,7 @@ function TargetFrame_CheckFaction(self)
   original(self)
 
 	if UnitPlayerControlled("target") and classcolors then
-	  local _, class = UnitClass("player")
+	  local _, class = UnitClass("target")
 	  local class = RAID_CLASS_COLORS[class] or { r = .5, g = .5, b = .5, a = 1 }
 	  TargetFrameNameBackground:SetVertexColor(class.r, class.g, class.b, 1)
 	end
