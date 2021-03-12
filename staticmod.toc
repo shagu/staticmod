@@ -11,3 +11,4 @@ config.lua
 # modules
 chat.lua
 minimap.lua
+darken.lua
