@@ -35,6 +35,7 @@ local function IsBlacklisted(texture)
 end
 
 local function DarkenBorder(texture, frame)
+  frame:SetBackdropBorderColor(.2, .2, .2, 1)
   if not frame or frame:GetWidth() ~= 32 or frame:GetHeight() ~= 32 then return end
   if texture and frame and not frame.staticmod_backdrop and string.find(texture, "Button", 1) then
     frame.staticmod_backdrop = CreateFrame("Frame", nil, frame)
