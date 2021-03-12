@@ -74,7 +74,14 @@ local function SetVertex(frame, r, g, b, a)
 end
 
 if darken then
+  TOOLTIP_DEFAULT_COLOR.r = .2
+  TOOLTIP_DEFAULT_COLOR.g = .2
+  TOOLTIP_DEFAULT_COLOR.b = .2
+  TOOLTIP_DEFAULT_BACKGROUND_COLOR.r = .2
+  TOOLTIP_DEFAULT_BACKGROUND_COLOR.g = .2
+  TOOLTIP_DEFAULT_BACKGROUND_COLOR.b = .2
   SetVertex(UIParent)
+
   MinimapClock:SetBackdropBorderColor(.2,.2,.2,1)
   MinimapClock:SetBackdropColor(.2,.2,.2,1)
 end
