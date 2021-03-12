@@ -15,8 +15,26 @@ local blacklist = {
   ["Button"] = true,
   ["Icon"] = true,
   ["AddOns"] = true,
-  ["Material"] = true,
+  ["StationeryTest"] = true,
 }
+
+local function AddBackground(frame, w, h, x, y)
+  if frame.Material then return end
+  frame.Material = frame:CreateTexture(nil, "OVERLAY")
+  frame.Material:SetTexture("Interface\\Stationery\\StationeryTest1")
+  frame.Material:SetWidth(w)
+  frame.Material:SetHeight(h)
+  frame.Material:SetPoint("TOPLEFT", frame, x, y)
+  frame.Material:SetVertexColor(.8, .8, .8)
+end
+
+AddBackground(SpellBookFrame, 325, 355, 17, -74)
+AddBackground(QuestLogDetailScrollFrame, 300, 261, 0, 0)
+for _, v in pairs({QuestFrameGreetingPanel, QuestFrameDetailPanel,
+  QuestFrameProgressPanel, QuestFrameRewardPanel, GossipFrameGreetingPanel})
+do
+  AddBackground(v, 300, 330, 24, -82)
+end
 
 local function IsBlacklisted(texture)
   local name = texture:GetName()
