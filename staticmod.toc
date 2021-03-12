@@ -12,3 +12,4 @@ config.lua
 chat.lua
 minimap.lua
 darken.lua
+unitframes.lua
