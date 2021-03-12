@@ -1,6 +1,8 @@
 local _G = _G or getfenv(0)
 local classcolors = staticmod_config["classcolor"]
 
+PlayerFrameBackground:SetAlpha(.5)
+TargetFrameBackground:SetAlpha(.5)
 
 -- enable class color backgrounds
 local original = TargetFrame_CheckFaction
