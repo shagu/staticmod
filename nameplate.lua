@@ -37,10 +37,6 @@ nameplates:SetScript("OnUpdate", function()
           object:SetParent(new)
         end
 
-        for i, object in pairs({healthbar:GetRegions()}) do
-          object:SetParent(new)
-        end
-
         new.plate = plate
         new:SetScript("OnShow", function()
           -- adjust sizes
