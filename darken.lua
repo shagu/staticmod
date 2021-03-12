@@ -17,6 +17,7 @@ local blacklist = {
   ["Icon"] = true,
   ["AddOns"] = true,
   ["StationeryTest"] = true,
+  ["TargetDead"] = true, -- LootFrame Icon
 }
 
 local function AddBackground(frame, w, h, x, y)
