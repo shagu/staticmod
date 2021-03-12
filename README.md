@@ -39,6 +39,9 @@ See config.lua for the limited options available. Don't ask for features, I don'
 ## Darken
 - Optional: All frames can be scanned to modify their textures to a darker version (experimental/incomplete)
 
+## Nameplates
+- Nameplates scale with UI-Scale
+
 ## Layout
 - Player and target are moved to the bottom-center of the screen
 - Both chat frames are aligned to bottom left and bottom right

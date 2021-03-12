@@ -15,6 +15,7 @@ darken.lua
 unitframes.lua
 map.lua
 tooltip.lua
+nameplate.lua
 
 # move
 layout.lua
