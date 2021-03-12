@@ -129,8 +129,6 @@ if darken then
         if IsNamePlate(plate) and not registry[plate] then
           SetVertex(plate)
           local healthbar = plate:GetChildren()
-          print(healthbar:GetStatusBarTexture():GetTexture())
-
           registry[plate] = plate
         end
       end
