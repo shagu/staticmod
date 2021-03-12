@@ -13,3 +13,4 @@ chat.lua
 minimap.lua
 darken.lua
 unitframes.lua
+map.lua
