@@ -17,6 +17,7 @@ map.lua
 tooltip.lua
 nameplate.lua
 sellvalue.lua
+eqcompare.lua
 
 # move
 layout.lua
