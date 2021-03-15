@@ -19,6 +19,7 @@ local blacklist = {
   ["StationeryTest"] = true,
   ["TargetDead"] = true, -- LootFrame Icon
   ["KeyRing"] = true, -- bag frame
+  ["GossipIcon"] = true,
 }
 
 local function IsBlacklisted(texture)
