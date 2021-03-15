@@ -133,7 +133,12 @@ if darken then
   TOOLTIP_DEFAULT_BACKGROUND_COLOR.r = .2
   TOOLTIP_DEFAULT_BACKGROUND_COLOR.g = .2
   TOOLTIP_DEFAULT_BACKGROUND_COLOR.b = .2
+
   DarkenFrame(UIParent)
+
+  DarkenFrame(DropDownList1)
+  DarkenFrame(DropDownList2)
+  DarkenFrame(DropDownList3)
 
   MinimapClock:SetBackdropBorderColor(.2,.2,.2,1)
   MinimapClock:SetBackdropColor(.2,.2,.2,1)
