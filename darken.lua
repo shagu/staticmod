@@ -63,7 +63,6 @@ local backgrounds = {
 }
 
 local function AddSpecialBackground(frame, w, h, x, y)
-  print(frame:GetName())
   if frame.staticmod_bg then return end
 
   frame.Material = frame:CreateTexture(nil, "OVERLAY")
