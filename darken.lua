@@ -18,34 +18,13 @@ local blacklist = {
   ["AddOns"] = true,
   ["StationeryTest"] = true,
   ["TargetDead"] = true, -- LootFrame Icon
+  ["KeyRing"] = true, -- bag frame
 }
-
-local function AddBackground(frame, w, h, x, y)
-  if frame.Material then return end
-  frame.Material = frame:CreateTexture(nil, "OVERLAY")
-  frame.Material:SetTexture("Interface\\Stationery\\StationeryTest1")
-  frame.Material:SetWidth(w)
-  frame.Material:SetHeight(h)
-  frame.Material:SetPoint("TOPLEFT", frame, x, y)
-  frame.Material:SetVertexColor(.8, .8, .8)
-end
-
-AddBackground(SpellBookFrame, 325, 355, 17, -74)
-AddBackground(QuestLogDetailScrollFrame, 300, 261, 0, 0)
-for _, v in pairs({QuestFrameGreetingPanel, QuestFrameDetailPanel,
-  QuestFrameProgressPanel, QuestFrameRewardPanel, GossipFrameGreetingPanel})
-do
-  AddBackground(v, 300, 330, 24, -82)
-end
 
 local function IsBlacklisted(texture)
   local name = texture:GetName()
   local texture = texture:GetTexture()
-
   if not texture then return true end
-
-  if name then -- also apply blacklist to names
-  end
 
   for entry in pairs(blacklist) do
     if string.find(texture, entry, 1) then return true end
@@ -54,19 +33,48 @@ local function IsBlacklisted(texture)
   return nil
 end
 
-local function DarkenBorder(texture, frame)
-  frame:SetBackdropBorderColor(.2, .2, .2, 1)
-  if not frame or frame:GetWidth() ~= 32 or frame:GetHeight() ~= 32 then return end
-  if texture and frame and not frame.staticmod_backdrop and string.find(texture, "Button", 1) then
-    frame.staticmod_backdrop = CreateFrame("Frame", nil, frame)
-    frame.staticmod_backdrop:SetPoint("TOPLEFT", frame, "TOPLEFT", 2, -2)
-    frame.staticmod_backdrop:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -2, 2)
-    frame.staticmod_backdrop:SetBackdrop(border)
-    frame.staticmod_backdrop:SetBackdropBorderColor(.2, .2, .2, 1)
+local borders = {
+  ["BuffButton"] = 3,
+  ["SpellButton"] = 3,
+  ["SpellBookSkillLineTab"] = 3,
+  ["ActionButton"] = 3,
+  ["Character(.+)Slot"] = 3,
+  ["ContainerFrame(.+)Item"] = 3,
+  ["MainMenuBarBackpackButton"] = 3,
+  ["CharacterBag(.+)Slot"] = 3,
+  ["ChatFrame(.+)Button"] = -2,
+}
+
+local function AddSpecialBorder(frame, inset)
+  if not frame.staticmod_border then
+    frame.staticmod_border = CreateFrame("Frame", nil, frame)
+    frame.staticmod_border:SetPoint("TOPLEFT", frame, "TOPLEFT", -inset, inset)
+    frame.staticmod_border:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", inset, -inset)
+    frame.staticmod_border:SetBackdrop(border)
+    frame.staticmod_border:SetBackdropBorderColor(.2, .2, .2, 1)
   end
 end
 
-local function SetVertex(frame, r, g, b, a)
+local backgrounds = {
+  ["^SpellBookFrame$"] = { 325, 355, 17, -74 },
+  ["^QuestLogDetailScrollFrame$"] = {300, 261, 0, 0 },
+  ["^QuestFrame(.+)Panel$"] = { 300, 330, 24, -82 },
+  ["^GossipFrameGreetingPanel$"] = { 300, 330, 24, -82 },
+}
+
+local function AddSpecialBackground(frame, w, h, x, y)
+  print(frame:GetName())
+  if frame.staticmod_bg then return end
+
+  frame.Material = frame:CreateTexture(nil, "OVERLAY")
+  frame.Material:SetTexture("Interface\\Stationery\\StationeryTest1")
+  frame.Material:SetWidth(w)
+  frame.Material:SetHeight(h)
+  frame.Material:SetPoint("TOPLEFT", frame, x, y)
+  frame.Material:SetVertexColor(.8, .8, .8)
+end
+
+local function DarkenFrame(frame, r, g, b, a)
   -- set defaults
   if not r and not g and not b then
     r, g, b, a = .2, .2, .2, 1
@@ -75,15 +83,34 @@ local function SetVertex(frame, r, g, b, a)
   -- iterate through all subframes
   if frame and frame.GetChildren then
     for _, frame in pairs({frame:GetChildren()}) do
-      SetVertex(frame, r, g, b, a)
+      DarkenFrame(frame, r, g, b, a)
     end
   end
 
   -- set vertex on all regions
   if frame.GetRegions then
+    -- read name
+    local name = frame.GetName and frame:GetName()
+
+    -- set a dark backdrop border color everywhere
+    frame:SetBackdropBorderColor(.2, .2, .2, 1)
+
+    -- add special backgrounds to quests and such
+    for pattern, inset in pairs(backgrounds) do
+      if name and string.find(name, pattern) then AddSpecialBackground(frame, inset[1], inset[2], inset[3], inset[4]) end
+    end
+
+    -- add black borders around specified buttons
+    for pattern, inset in pairs(borders) do
+      if name and string.find(name, pattern) then AddSpecialBorder(frame, inset) end
+    end
+
+    -- scan through all regions (textures)
     for _, region in pairs({frame:GetRegions()}) do
       if region.SetVertexColor and region:GetObjectType() == "Texture" then
-        DarkenBorder(region:GetTexture(), frame)
+        if region:GetTexture() and string.find(region:GetTexture(), "UI%-Panel%-Button%-Up") then
+          -- region:SetDesaturated(true) -- monochrome buttons
+        end
 
         if not IsBlacklisted(region) then
           region:SetVertexColor(r,g,b,a)
@@ -100,7 +127,7 @@ if darken then
   TOOLTIP_DEFAULT_BACKGROUND_COLOR.r = .2
   TOOLTIP_DEFAULT_BACKGROUND_COLOR.g = .2
   TOOLTIP_DEFAULT_BACKGROUND_COLOR.b = .2
-  SetVertex(UIParent)
+  DarkenFrame(UIParent)
 
   MinimapClock:SetBackdropBorderColor(.2,.2,.2,1)
   MinimapClock:SetBackdropColor(.2,.2,.2,1)
@@ -128,7 +155,7 @@ if darken then
       for i = initialized + 1, parentcount do
         plate = childs[i]
         if IsNamePlate(plate) and not registry[plate] then
-          SetVertex(plate)
+          DarkenFrame(plate)
           local healthbar = plate:GetChildren()
           registry[plate] = plate
         end
