@@ -16,6 +16,7 @@ unitframes.lua
 map.lua
 tooltip.lua
 nameplate.lua
+sellvalue.lua
 
 # move
 layout.lua
