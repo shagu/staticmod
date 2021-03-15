@@ -1925,21 +1925,6 @@ local function AddVendorPrices(frame, id, count)
       if sell > 0 then SetTooltipMoney(frame, sell * count) end
     end
 
-    if IsShiftKeyDown() then
-      frame:AddLine(" ")
-
-      if count > 1 then
-        frame:AddDoubleLine("Sell:", CreateGoldString(sell) .. "|cff555555  //  " .. CreateGoldString(sell*count), 1, 1, 1);
-      else
-        frame:AddDoubleLine("Sell:", CreateGoldString(sell * count), 1, 1, 1);
-      end
-
-      if count > 1 then
-        frame:AddDoubleLine("Buy:", CreateGoldString(buy) .. "|cff555555  //  " .. CreateGoldString(buy*count), 1, 1, 1);
-      else
-        frame:AddDoubleLine("Buy:", CreateGoldString(buy), 1, 1, 1);
-      end
-    end
     frame:Show()
   end
 end
