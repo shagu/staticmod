@@ -26,6 +26,12 @@ local function IsBlacklisted(texture)
   local texture = texture:GetTexture()
   if not texture then return true end
 
+  if name then
+    for entry in pairs(blacklist) do
+      if string.find(name, entry, 1) then return true end
+    end
+  end
+
   for entry in pairs(blacklist) do
     if string.find(texture, entry, 1) then return true end
   end
