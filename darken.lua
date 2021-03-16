@@ -43,6 +43,7 @@ end
 
 local borders = {
   ["BuffButton"] = 3,
+  ["TempEnchant"] = 3,
   ["SpellButton"] = 3,
   ["SpellBookSkillLineTab"] = 3,
   ["ActionButton"] = 3,
@@ -92,6 +93,24 @@ function BuffButton_Update()
     this.staticmod_border:SetBackdropBorderColor(r, g, b, 1)
     original:SetAlpha(0)
   end
+end
+
+local hookBuffFrame_Enchant_OnUpdate = BuffFrame_Enchant_OnUpdate
+function BuffFrame_Enchant_OnUpdate(elapsed)
+  hookBuffFrame_Enchant_OnUpdate(elapsed)
+
+  -- return early without any weapon enchants
+  local mh, _, _, oh = GetWeaponEnchantInfo()
+	if not mh and not oh then return end
+
+  -- update enchant 1
+  local r, g, b = GetItemQualityColor(GetInventoryItemQuality("player", TempEnchant1:GetID()) or 1)
+  TempEnchant1.staticmod_border:SetBackdropBorderColor(r,g,b,1)
+  TempEnchant1Border:SetAlpha(0)
+
+  local r, g, b = GetItemQualityColor(GetInventoryItemQuality("player", TempEnchant2:GetID()) or 1)
+  TempEnchant2.staticmod_border:SetBackdropBorderColor(r,g,b,1)
+  TempEnchant2Border:SetAlpha(0)
 end
 
 local function DarkenFrame(frame, r, g, b, a)
