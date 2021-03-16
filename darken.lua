@@ -20,6 +20,7 @@ local blacklist = {
   ["TargetDead"] = true, -- LootFrame Icon
   ["KeyRing"] = true, -- bag frame
   ["GossipIcon"] = true,
+  ["WorldMap\\(.+)\\"] = true,
 }
 
 local function IsBlacklisted(texture)
@@ -139,6 +140,8 @@ if darken then
   DarkenFrame(DropDownList1)
   DarkenFrame(DropDownList2)
   DarkenFrame(DropDownList3)
+
+  DarkenFrame(WorldMapFrame)
 
   MinimapClock:SetBackdropBorderColor(.2,.2,.2,1)
   MinimapClock:SetBackdropColor(.2,.2,.2,1)
