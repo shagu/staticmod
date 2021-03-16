@@ -47,6 +47,7 @@ local borders = {
   ["SpellButton"] = 3,
   ["SpellBookSkillLineTab"] = 3,
   ["ActionButton"] = 3,
+  ["MultiBarBottom(.+)Button"] = 3,
   ["Character(.+)Slot"] = 3,
   ["ContainerFrame(.+)Item"] = 3,
   ["MainMenuBarBackpackButton"] = 3,
