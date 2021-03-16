@@ -89,7 +89,7 @@ function BuffButton_Update()
   hookBuffButton_Update()
   name = this:GetName()
   original = _G[name.."Border"]
-  if original then
+  if original and this.staticmod_border then
     r, g, b = original:GetVertexColor()
     this.staticmod_border:SetBackdropBorderColor(r, g, b, 1)
     original:SetAlpha(0)
@@ -104,11 +104,14 @@ function BuffFrame_Enchant_OnUpdate(elapsed)
   local mh, _, _, oh = GetWeaponEnchantInfo()
 	if not mh and not oh then return end
 
-  -- update enchant 1
+  -- update weapon enchant 1
+  AddSpecialBorder(TempEnchant1, 3)
   local r, g, b = GetItemQualityColor(GetInventoryItemQuality("player", TempEnchant1:GetID()) or 1)
   TempEnchant1.staticmod_border:SetBackdropBorderColor(r,g,b,1)
   TempEnchant1Border:SetAlpha(0)
 
+  -- update weapon enchant 2
+  AddSpecialBorder(TempEnchant2, 3)
   local r, g, b = GetItemQualityColor(GetInventoryItemQuality("player", TempEnchant2:GetID()) or 1)
   TempEnchant2.staticmod_border:SetBackdropBorderColor(r,g,b,1)
   TempEnchant2Border:SetAlpha(0)
