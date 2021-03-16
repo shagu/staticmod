@@ -42,6 +42,12 @@ See config.lua for the limited options available. Don't ask for features, I don'
 ## Nameplates
 - Nameplates scale with UI-Scale
 
+## Sell Value
+- Shows vendor sell values on item tooltips
+
+## Equip Compare
+- Shows a tooltip of the equipped item while <Shift> key is pressed
+
 ## Layout
 - Player and target are moved to the bottom-center of the screen
 - Both chat frames are aligned to bottom left and bottom right
