@@ -81,6 +81,19 @@ local function AddSpecialBackground(frame, w, h, x, y)
   frame.Material:SetVertexColor(.8, .8, .8)
 end
 
+local name, original, r, g, b
+local hookBuffButton_Update = BuffButton_Update
+function BuffButton_Update()
+  hookBuffButton_Update()
+  name = this:GetName()
+  original = _G[name.."Border"]
+  if original then
+    r, g, b = original:GetVertexColor()
+    this.staticmod_border:SetBackdropBorderColor(r, g, b, 1)
+    original:SetAlpha(0)
+  end
+end
+
 local function DarkenFrame(frame, r, g, b, a)
   -- set defaults
   if not r and not g and not b then
