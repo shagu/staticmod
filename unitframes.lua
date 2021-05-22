@@ -19,6 +19,9 @@ function TargetFrame_CheckFaction(self)
   else
 	  TargetFrameNameBackground:Show()
   end
+
+  PlayerFrameBackground:SetDrawLayer("BORDER")
+  TargetFrameBackground:SetDrawLayer("BORDER")
 end
 
 local _, class = UnitClass("player")
