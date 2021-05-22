@@ -21,6 +21,7 @@ local blacklist = {
   ["KeyRing"] = true, -- bag frame
   ["GossipIcon"] = true,
   ["WorldMap\\(.+)\\"] = true,
+  ["PetHappiness"] = true,
 }
 
 local function IsBlacklisted(texture)
@@ -53,6 +54,7 @@ local borders = {
   ["MainMenuBarBackpackButton"] = 3,
   ["CharacterBag(.+)Slot"] = 3,
   ["ChatFrame(.+)Button"] = -2,
+  ["PetFrameHappiness"] = 1,
 }
 
 local function AddSpecialBorder(frame, inset)
