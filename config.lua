@@ -2,12 +2,17 @@ staticmod_config = {
   -- Set to "true" to enable class colors on player and target frame. The
   -- name background that is by default used to display reaction colors such as
   -- hostile, friendly and neutral will be used to display class colors.
-  classcolor = nil,
+  classcolor = true,
+
+  -- Set to "true" to automatically hide the unitframe background on friendly
+  -- units that are not controlled by another player. (self + friendly npcs)
+  -- classcolor needs to be enabled in order to have this take effect.
+  hidefriendly = true,
 
   -- Set to "true" to enable automatic texture detection. This will scan for
   -- all frames and their textures in order to darken them via SetVertexColor
   -- see darken.lua for details. (incomplete)
-  darken = nil,
+  darken = true,
 
   -- Set to "true" to enable a squared minimap. The original border will be
   -- replaced with the tooltip border that has colors as close as possible to
