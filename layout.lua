@@ -16,4 +16,10 @@ onload:SetScript("OnEvent", function()
 
   ChatFrame3:ClearAllPoints()
   ChatFrame3:SetPoint("BOTTOMRIGHT", UIParent ,"BOTTOMRIGHT", -40, 110)
+
+  -- right actionbar
+  MultiBarRight:ClearAllPoints()
+  MultiBarRight:SetPoint("RIGHT", -7, 0)
+  MultiBarRight:SetScale(.9)
+  MultiBarLeft:SetScale(.9)
 end)
