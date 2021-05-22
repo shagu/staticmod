@@ -2046,3 +2046,5 @@ function GameTooltip.SetTradeTargetItem(self, index)
   GameTooltip.itemLink = GetTradeTargetItemLink(index)
   return HookSetTradeTargetItem(self, index)
 end
+
+StaticModSellValue = data
