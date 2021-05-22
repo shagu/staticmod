@@ -23,6 +23,11 @@ else
   Minimap:SetMaskTexture("Textures\\MinimapMask")
 end
 
+-- hide minimap zone background
+MinimapBorderTop:Hide()
+MinimapToggleButton:Hide()
+MinimapZoneTextButton:SetPoint("CENTER", 10, 85)
+
 -- hide zoom buttons and enable mousewheel
 MinimapZoomIn:Hide()
 MinimapZoomOut:Hide()
