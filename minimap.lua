@@ -39,8 +39,8 @@ end)
 -- add a clock
 MinimapClock = CreateFrame("Frame", "Clock", Minimap)
 MinimapClock:SetFrameStrata("HIGH")
-MinimapClock:SetPoint("BOTTOM", MinimapCluster, "BOTTOM", 8, 12)
-MinimapClock:SetWidth(60)
+MinimapClock:SetPoint("BOTTOM", MinimapCluster, "BOTTOM", 8, 15)
+MinimapClock:SetWidth(50)
 MinimapClock:SetHeight(25)
 MinimapClock:SetBackdrop({
   bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
