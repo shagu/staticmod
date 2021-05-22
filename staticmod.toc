@@ -18,6 +18,7 @@ tooltip.lua
 nameplate.lua
 sellvalue.lua
 eqcompare.lua
+autovendor.lua
 
 # move
 layout.lua
