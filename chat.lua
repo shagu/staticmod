@@ -105,11 +105,16 @@ end
 
 onload:SetScript("OnEvent", function()
   this:UnregisterAllEvents()
+  this.time = GetTime()
   this:Show()
 end)
 
 onload:SetScript("OnUpdate", function()
-  this:Hide()
-  SetupChat()
-  JoinWorld()
+  -- wait .2 seconds to make sure all other channels
+  -- are populated, to avoid having /world on /1
+  if this.time + .2 < GetTime() then
+    this:Hide()
+    SetupChat()
+    JoinWorld()
+  end
 end)
