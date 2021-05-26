@@ -1,5 +1,8 @@
+-- tbc does not allow to rescale nameplates (secure_frames)
+if ST_CLIENT == "tbc" then return end
+
 local function IsNamePlate(frame)
-  if frame:GetObjectType() ~= "Button" then return nil end
+  if frame:GetObjectType() ~= ST_NAMEPLATE_FRAMETYPE then return nil end
   regions = frame:GetRegions()
 
   if not regions then return nil end
