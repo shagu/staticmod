@@ -55,6 +55,7 @@ local borders = {
   ["CharacterBag(.+)Slot$"] = 3,
   ["ChatFrame(.+)Button"] = -2,
   ["PetFrameHappiness"] = 1,
+  ["MicroButton"] = { -22, -1, -1, -1 },
 }
 
 local function AddSpecialBorder(frame, inset)
