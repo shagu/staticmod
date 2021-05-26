@@ -169,7 +169,7 @@ local function DarkenFrame(frame, r, g, b, a)
   end
 
   -- set vertex on all regions
-  if frame.GetRegions then
+  if frame and frame.GetRegions then
     -- read name
     local name = frame.GetName and frame:GetName()
 
