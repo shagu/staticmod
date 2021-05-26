@@ -58,10 +58,17 @@ local borders = {
 }
 
 local function AddSpecialBorder(frame, inset)
+  local top, right, bottom, left
+
+  if type(inset) == "table" then
+    top, right, bottom, left = unpack((inset))
+    left, bottom = -left, -bottom
+  end
+
   if not frame.staticmod_border then
     frame.staticmod_border = CreateFrame("Frame", nil, frame)
-    frame.staticmod_border:SetPoint("TOPLEFT", frame, "TOPLEFT", -inset, inset)
-    frame.staticmod_border:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", inset, -inset)
+    frame.staticmod_border:SetPoint("TOPLEFT", frame, "TOPLEFT", (left or -inset), (top or inset))
+    frame.staticmod_border:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", (right or inset), (bottom or -inset))
     frame.staticmod_border:SetBackdrop(border)
     frame.staticmod_border:SetBackdropBorderColor(.2, .2, .2, 1)
   end
