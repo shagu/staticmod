@@ -217,11 +217,17 @@ if darken then
 
   DarkenFrame(WorldMapFrame)
 
-  MinimapClock:SetBackdropBorderColor(.2,.2,.2,1)
-  MinimapClock:SetBackdropColor(.2,.2,.2,1)
+  if MinimapClock then -- vanilla
+    MinimapClock:SetBackdropBorderColor(.2,.2,.2,1)
+    MinimapClock:SetBackdropColor(.2,.2,.2,1)
+  else -- tbc
+    HookAddonOrVariable("Blizzard_TimeManager", function()
+      DarkenFrame(TimeManagerClockButton)
+    end)
+  end
 
   local function IsNamePlate(frame)
-    if frame:GetObjectType() ~= "Button" then return nil end
+    if frame:GetObjectType() ~= ST_NAMEPLATE_FRAMETYPE then return nil end
     regions = frame:GetRegions()
 
     if not regions then return nil end
