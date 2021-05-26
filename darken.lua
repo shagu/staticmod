@@ -76,8 +76,15 @@ local borders = {
   ["CharacterBag(.+)Slot$"] = 3,
   ["ChatFrame(.+)Button"] = -2,
   ["PetFrameHappiness"] = 1,
-  ["MicroButton"] = { -22, -1, -1, -1 },
+  ["MicroButton"] = { -20, 1, 1, 1 },
 }
+
+-- sizing is a bit different on tbc
+if ST_CLIENT == "tbc" then
+  borders["BuffButton"] = 2
+  borders["TempEnchant"] = 2
+  borders["MicroButton"] = { -22, -1, -1, -1 }
+end
 
 local function AddSpecialBorder(frame, inset)
   local top, right, bottom, left
