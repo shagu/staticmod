@@ -49,10 +49,10 @@ local borders = {
   ["SpellBookSkillLineTab"] = 3,
   ["ActionButton"] = 3,
   ["MultiBar(.+)Button"] = 3,
-  ["Character(.+)Slot"] = 3,
+  ["Character(.+)Slot$"] = 3,
   ["ContainerFrame(.+)Item"] = 3,
-  ["MainMenuBarBackpackButton"] = 3,
-  ["CharacterBag(.+)Slot"] = 3,
+  ["MainMenuBarBackpackButton$"] = 3,
+  ["CharacterBag(.+)Slot$"] = 3,
   ["ChatFrame(.+)Button"] = -2,
   ["PetFrameHappiness"] = 1,
 }
