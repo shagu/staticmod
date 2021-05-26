@@ -36,24 +36,25 @@ Minimap:SetScript("OnMouseWheel", function()
   if(arg1 > 0) then Minimap_ZoomIn() else Minimap_ZoomOut() end
 end)
 
--- add a clock
-MinimapClock = CreateFrame("Frame", "Clock", Minimap)
-MinimapClock:SetFrameStrata("HIGH")
-MinimapClock:SetPoint("BOTTOM", MinimapCluster, "BOTTOM", 8, 15)
-MinimapClock:SetWidth(50)
-MinimapClock:SetHeight(25)
-MinimapClock:SetBackdrop({
-  bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-  edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-  tile = true, tileSize = 8, edgeSize = 16,
-  insets = { left = 3, right = 3, top = 3, bottom = 3 }})
-MinimapClock:SetBackdropBorderColor(.9,.8,.5,1)
-MinimapClock:SetBackdropColor(.4,.4,.4,1)
+if ST_CLIENT == "vanilla" then -- add a clock
+  MinimapClock = CreateFrame("Frame", "Clock", Minimap)
+  MinimapClock:SetFrameStrata("HIGH")
+  MinimapClock:SetPoint("BOTTOM", MinimapCluster, "BOTTOM", 8, 15)
+  MinimapClock:SetWidth(50)
+  MinimapClock:SetHeight(25)
+  MinimapClock:SetBackdrop({
+    bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+    edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+    tile = true, tileSize = 8, edgeSize = 16,
+    insets = { left = 3, right = 3, top = 3, bottom = 3 }})
+  MinimapClock:SetBackdropBorderColor(.9,.8,.5,1)
+  MinimapClock:SetBackdropColor(.4,.4,.4,1)
 
-MinimapClock.text = MinimapClock:CreateFontString("Status", "LOW", "GameFontNormal")
-MinimapClock.text:SetFont(STANDARD_TEXT_FONT, 12, "OUTLINE")
-MinimapClock.text:SetAllPoints(MinimapClock)
-MinimapClock.text:SetFontObject(GameFontWhite)
-MinimapClock:SetScript("OnUpdate", function()
-  this.text:SetText(date("%H:%M"))
-end)
+  MinimapClock.text = MinimapClock:CreateFontString("Status", "LOW", "GameFontNormal")
+  MinimapClock.text:SetFont(STANDARD_TEXT_FONT, 12, "OUTLINE")
+  MinimapClock.text:SetAllPoints(MinimapClock)
+  MinimapClock.text:SetFontObject(GameFontWhite)
+  MinimapClock:SetScript("OnUpdate", function()
+    this.text:SetText(date("%H:%M"))
+  end)
+end
