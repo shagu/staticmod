@@ -1,0 +1,24 @@
+## Interface: 20400
+## Title: |cffffcc00static|cffffffffmod
+## Author: Shagu
+## Notes: Static Modifications to enhance the default UI to my personal taste
+## Version: GIT
+
+# basic
+core.lua
+config.lua
+
+# modules
+chat.lua
+minimap.lua
+darken.lua
+unitframes.lua
+map.lua
+tooltip.lua
+nameplate.lua
+sellvalue.lua
+eqcompare.lua
+autovendor.lua
+
+# move
+layout.lua
