@@ -95,14 +95,21 @@ end
 
 local name, original, r, g, b
 local hookBuffButton_Update = BuffButton_Update
-function BuffButton_Update()
-  hookBuffButton_Update()
-  name = this:GetName()
+function BuffButton_Update(buttonName, index, filter)
+  hookBuffButton_Update(buttonName, index, filter)
+
+  -- tbc passes buttonName and index arguments, vanilla uses "this" context
+  name = buttonName and index and buttonName .. index or this:GetName()
   original = _G[name.."Border"]
+
   if original and this.staticmod_border then
     r, g, b = original:GetVertexColor()
     this.staticmod_border:SetBackdropBorderColor(r, g, b, 1)
     original:SetAlpha(0)
+  elseif not original and _G[name] then
+    -- tbc buff buttons don't have borders, so we
+    -- need to manually add a dark one.
+    AddSpecialBorder(_G[name], 2)
   end
 end
 
