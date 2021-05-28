@@ -13,6 +13,7 @@ See config.lua for the limited options available. Don't ask for features, I don'
 ## Unitframes
 - Player unitframe has the same background texture as target frame
 - Optional: Class colors can be used instead of reaction colors
+- Optional: Color backgrounds can be hidden for friendly NPCs
 
 ## Minimap
 - Minimap can be zoomed via mousewheel
@@ -37,16 +38,19 @@ See config.lua for the limited options available. Don't ask for features, I don'
 - On the bottom-left of the worldmap, the coordinates are displayed
 
 ## Darken
-- Optional: All frames can be scanned to modify their textures to a darker version (experimental/incomplete)
+- Optional: All frames can be scanned to modify the textures to a darker version
 
 ## Nameplates
-- Nameplates scale with UI-Scale
+- Nameplates scale with UI-Scale (Vanilla only)
 
 ## Sell Value
 - Shows vendor sell values on item tooltips
 
 ## Equip Compare
 - Shows a tooltip of the equipped item while <Shift> key is pressed
+
+## Auto-Sell
+- Each Merchant has a button to sell all grey items
 
 ## Layout
 - Player and target are moved to the bottom-center of the screen
