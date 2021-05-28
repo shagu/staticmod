@@ -64,6 +64,7 @@ local function IsBlacklisted(texture)
 end
 
 local borders = {
+  ["ShapeshiftButton"] = 3,
   ["BuffButton"] = 3,
   ["TempEnchant"] = 3,
   ["SpellButton"] = 3,
