@@ -5,23 +5,38 @@ See config.lua for the limited options available. Don't ask for features, I don'
 
 ![preview](preview.jpg)
 
-## General
+## Installation (Vanilla)
+1. Download **[Latest Version](https://github.com/shagu/staticmod/archive/master.zip)**
+2. Unpack the Zip file
+3. Rename the folder "staticmod-master" to "staticmod"
+4. Copy "staticmod" into Wow-Directory\Interface\AddOns
+5. Restart Wow
+
+## Installation (The Burning Crusade)
+1. Download **[Latest Version](https://github.com/shagu/staticmod/archive/master.zip)**
+2. Unpack the Zip file
+3. Rename the folder "staticmod-master" to "staticmod-tbc"
+4. Copy "staticmod-tbc" into Wow-Directory\Interface\AddOns
+5. Restart Wow
+
+## Features
+### General
 - `/rl` can be used to reload the UI
 - `print()` can be used to output messages
 - `print()` and `message()` cache their output to only display the same message once each session.
 
-## Unitframes
+### Unitframes
 - Player unitframe has the same background texture as target frame
 - Optional: Class colors can be used instead of reaction colors
 - Optional: Color backgrounds can be hidden for friendly NPCs
 
-## Minimap
+### Minimap
 - Minimap can be zoomed via mousewheel
 - Minimap day/night icon and zoom buttons removed
 - A clock now shows up on the minimap
 - Optional: A squared minimap
 
-## Chat
+### Chat
 - A second chat window is created (Loot & Spam)
 - Chat messages are split into left and right chat.
   * Left Chat is used for important messages
@@ -31,27 +46,27 @@ See config.lua for the limited options available. Don't ask for features, I don'
 - The chat cursor can be moved without pressing <Alt>
 - Chat can be scrolled via mousewheel (hold shift to jump up/down)
 
-## Worldmap
+### Worldmap
 - Worldmap gets opened window mode
 - Window can be scaled with Mousewheel+Ctrl
 - Window can be made transparent with Mousewheel+Shift
 - On the bottom-left of the worldmap, the coordinates are displayed
 
-## Darken
+### Darken
 - Optional: All frames can be scanned to modify the textures to a darker version
 
-## Nameplates
+### Nameplates
 - Nameplates scale with UI-Scale (Vanilla only)
 
-## Sell Value
+### Sell Value
 - Shows vendor sell values on item tooltips
 
-## Equip Compare
+### Equip Compare
 - Shows a tooltip of the equipped item while <Shift> key is pressed
 
-## Auto-Sell
+### Auto-Sell
 - Each Merchant has a button to sell all grey items
 
-## Layout
+### Layout
 - Player and target are moved to the bottom-center of the screen
 - Both chat frames are aligned to bottom left and bottom right
